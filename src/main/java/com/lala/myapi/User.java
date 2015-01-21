@@ -7,9 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 /**
- * Created by admin on 14-10-21
+ * 数据库映射
+ * @author ly
+ * Create Time: 2014-12-28
  */
+
 @Entity
 @Table(name = "users")
 public class User{

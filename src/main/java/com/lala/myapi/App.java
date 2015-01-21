@@ -7,9 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
- * Hello world!
- *
+ * 启动类
+ * @author ly
+ * Create Time: 2014-12-28
  */
+
 @ComponentScan("com")
 @EnableJpaRepositories("com")
 @Configuration
