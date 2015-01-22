@@ -21,10 +21,10 @@
 #需要根据实际环境以及Java程序名称来修改这些参数
 ###################################
 #JDK所在路径
-JAVA_HOME="/opt/module/java/version/jdk1.8.0_05"
+JAVA_HOME="/usr/local/jdk1.8.0_05"
 
 #执行程序启动所使用的系统用户，考虑到安全，推荐不使用root帐号
-RUNNING_USER=prod
+RUNNING_USER=webwww
 
 #Java程序所在的目录（classes的上一级目录）
 APP_HOME=$2
@@ -66,7 +66,6 @@ psid=0
 
 checkpid() {
    javaps=`$JAVA_HOME/bin/jps -l | grep $APP_MAINCLASS`
-
    if [ -n "$javaps" ]; then
       psid=`echo $javaps | awk '{print $1}'`
    else
@@ -88,7 +87,6 @@ checkpid() {
 ###################################
 start() {
    checkpid
-
    if [ $psid -ne 0 ]; then
       echo "================================"
       echo "warn: $APP_MAINCLASS already started! (pid=$psid)"
@@ -120,7 +118,6 @@ start() {
 ###################################
 stop() {
    checkpid
-
    if [ $psid -ne 0 ]; then
       echo -n "Stopping $APP_MAINCLASS ...(pid=$psid) "
       kill -9 $psid
@@ -151,7 +148,6 @@ stop() {
 ###################################
 status() {
    checkpid
-
    if [ $psid -ne 0 ];  then
       echo "$APP_MAINCLASS is running! (pid=$psid)"
    else
@@ -199,7 +195,7 @@ case "$1" in
      info
      ;;
   *)
-     echo "Usage: $0 {start|stop|restart|status|info}"
+     echo "Usage: $0 {start|stop|restart}"
      exit 1
 esac
 exit 0
